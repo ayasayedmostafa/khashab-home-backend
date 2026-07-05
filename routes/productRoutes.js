@@ -14,7 +14,7 @@ const {
 router.get('/', getAllProducts);
 router.get('/:id', getProductById);
 
-// Protected routes - admin password required
+
 router.post('/', checkAdminPassword, upload.array('images', 50), createProduct);
 router.put('/:id', checkAdminPassword, upload.array('images', 50), updateProduct);
 router.delete('/:id', checkAdminPassword, deleteProduct);
