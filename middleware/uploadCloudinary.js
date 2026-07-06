@@ -7,6 +7,7 @@ const storage = new CloudinaryStorage({
   params: {
     folder: 'khashab-home',
     allowed_formats: ['jpg', 'jpeg', 'png'],
+    transformation: [{ width: 1200, quality: 'auto', fetch_format: 'auto' }],
   },
 });
 
