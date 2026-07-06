@@ -31,7 +31,7 @@ exports.getProductById = async (req, res) => {
 // Create a new product
 exports.createProduct = async (req, res) => {
   try {
-    const imagePaths = req.files ? req.files.map(file => `/uploads/${file.filename}`) : [];
+    const imagePaths = req.files ? req.files.map(file => file.path) : [];
 
     const newProduct = new Product({
       name: req.body.name,
@@ -62,7 +62,7 @@ exports.updateProduct = async (req, res) => {
 
     // Only update images if new ones were uploaded
     if (req.files && req.files.length > 0) {
-      updateData.images = req.files.map(file => `/uploads/${file.filename}`);
+      updateData.images = req.files.map(file => file.path);
     }
 
     const updatedProduct = await Product.findByIdAndUpdate(
